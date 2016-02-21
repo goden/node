@@ -1,0 +1,1 @@
+console.log("\x1b[1;31;47mAAAA");
