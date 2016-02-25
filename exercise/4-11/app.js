@@ -17,6 +17,7 @@ http.createServer(function(request, response) {
         }
     }
     pathname = (process.argv[2] || ".") + pathname; //若有傳入參數則使用參數的路徑
+    pathname = decodeURI(pathname);                 //因為中文網址會被編碼，使用此原生函式可以還原編碼過的中文字
 
     try {
         if (fs.statSync(pathname).isFile()) {
