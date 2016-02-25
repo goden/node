@@ -1,7 +1,8 @@
+// 依路徑讀取檔案 - 通用版
 var http = require("http");
 var fs = require("fs");
 var url = require("url");
-var mine = require("mine");
+var mime = require("mime");
 
 http.createServer(function(request, response) {
     var pathname = url.parse(request.url).pathname;
@@ -15,7 +16,7 @@ http.createServer(function(request, response) {
     try{
         if (fs.statSync(pathname).isFile()) {
             response.writeHead(200, {
-                "Content-Type": mine.lookup(pathname)
+                "Content-Type": mime.lookup(pathname)
             });
             response.write(fs.readFileSync(pathname));
             response.end();
