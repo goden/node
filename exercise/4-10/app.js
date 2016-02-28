@@ -1,7 +1,11 @@
+//
+// 判斷路徑最後是否為檔案 若否則送出301狀態碼重新導向
+// 所謂的301狀態碼(Permanently Moved),搜尋引擎會更自行更新其資料庫中的網址資訊
 var http = require("http");
 var fs = require("fs");
 var url = require("url");
 var mime = require("mime");
+
 http.createServer(function(request, response) {
     var pathname = url.parse(request.url).pathname;
     if (pathname.substr(pathname.length - 1) === "/") {
