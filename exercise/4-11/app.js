@@ -1,7 +1,11 @@
+//
+// 依路徑讀取檔案-支援中文路徑
+// 中文網址會被編碼，使用decodeURI函式可以還原編碼過的中文字。
 var http = require("http");
 var fs = require("fs");
 var url = require("url");
 var mime = require("mime");
+
 http.createServer(function(request, response) {
     var pathname = url.parse(request.url).pathname;
     if (pathname.substr(pathname.length - 1) === "/") {
