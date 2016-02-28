@@ -22,7 +22,23 @@ module.exports = function(request, response) {
         response.end();
     }
 
-
+    if (pathname === "/api/tips/") {
+        
+        response.writeHead(200, {
+            "Content-Type": "application/json"
+        });
+        
+        var tips = [
+            "隨時顯示提示訊息。",
+            "隨時可點選開啟提示。",
+            "滑鼠滑入照片後顯示提示訊息。"
+        ];
+        
+        var tip = tips[~~(Math.random()*tips.length)];
+        response.write(JSON.stringify(tip));
+        response.end();
+        
+    }
 
 
 
